@@ -20,14 +20,14 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Compilar robodomauricio5.java com dependência robocode.jar
-        run: javac -cp libs/robocode.jar robodomauricio5.java
+      - name: Compilar Astroboys.java com dependência robocode.jar
+        run: javac -cp libs/robocode.jar Astroboys.java
 
       - name: Baixar Checkstyle (10.12.4)
         run: wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.4/checkstyle-10.12.4-all.jar -O checkstyle.jar
 
       - name: Rodar Checkstyle
-        run: java -jar checkstyle.jar -c libs/google_checks.xml robodomauricio5.java
+        run: java -jar checkstyle.jar -c libs/google_checks.xml Astroboys.java
 
       - name: Baixar SpotBugs
         run: wget https://repo1.maven.org/maven2/com/github/spotbugs/spotbugs/4.8.3/spotbugs-4.8.3.tgz -O spotbugs.tgz
@@ -41,7 +41,7 @@ jobs:
       - name: Rodar SpotBugs
         run: |
           mkdir -p out
-          javac -cp libs/robocode.jar -d out robodomauricio5.java
+          javac -cp libs/robocode.jar -d out Astroboys.java
           spotbugs-4.8.3/bin/spotbugs -textui out/
 
       - name: Exibir mensagem final de sucesso
@@ -49,5 +49,5 @@ jobs:
         run: |
           echo '🎉 CI executado com sucesso!'
           echo 'Robô compilado, verificado com Checkstyle e analisado com SpotBugs.'
-          echo 'Arquivo usado: robodomauricio5.java'
+          echo 'Arquivo usado: Astroboys.java'
           echo 'Parabéns, pipeline completa e aprovada! 🚦'
